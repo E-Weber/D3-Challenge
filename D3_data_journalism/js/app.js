@@ -1,6 +1,12 @@
-var svg = d3.select("body").append("svg");
-svg.attr("width", "100px").attr("height", "100px");
-var circ = {
-    circlex: 50
+// define SVG area dimensions
+var svgWidth = 960;
+var svgHeight = 660;
+
+// define the chart's margins as an object
+var chartMargin = {
+    top: 30,
+    right: 30,
+    bottom: 30,
+    left: 30
 };
 
