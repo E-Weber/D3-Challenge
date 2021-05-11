@@ -91,11 +91,18 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     chartGroup.append("text")
         .attr("x", 350)
         .attr("y", 630)
+        //.attr("dy", "1em")
         .classed("axis-text", true)
         .text("In Poverty (%)");
 
     // y axis
-
+    chartGroup.append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", -5 - chartMargin.left)
+        .attr("x", 0 - (chartHeight / 2))
+        .attr("dy", "1em")
+        .classed("axis-text", true)
+        .text("Lacks Healthcare (%)");
 });
 
 
