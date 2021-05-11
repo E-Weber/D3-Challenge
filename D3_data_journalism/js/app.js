@@ -24,8 +24,21 @@ var svg = d3
 // load data
 d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     console.log(povdata);
+
+    // cast the data from the csv as numbers
     povdata.forEach(function (data) {
+        data.poverty = +data.poverty;
+        data.healthcare = +data.heathcare;
+        //console.log(data.state, data.poverty, data.healthcare, data.abbr)
+    });
 
+    // create scale for your independent (x) coordinates
+    var xScale = d3.scaleLinear()
+        .domain(d3.extent(povdata, d => d.poverty))
+        .range([0, svgWidth]);
 
-    })
-})
+    // create scale for your dependent (y) coordinates
+    var yScale = d3.scaleLinear()
+        .domain([0, d3.max(povdata, d => d.healthcare)])
+        .range([svgHeight, 0]);
+});
