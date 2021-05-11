@@ -41,4 +41,20 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     var yScale = d3.scaleLinear()
         .domain([0, d3.max(povdata, d => d.healthcare)])
         .range([svgHeight, 0]);
+
+    // create axes
+    var xAxis = d3.axisBottom(xScale).tickFormat();
+    var yAxis = d3.axisBottom(yScale).ticks(6);
+
+    // append axes
+
+    chartGroup.append("g")
+        .attr("transform", `translate(0, ${height})`)
+        .call(xAxis);
+
+    chartGroup.append("g")
+        .call(yAxis);
 });
+
+
+
