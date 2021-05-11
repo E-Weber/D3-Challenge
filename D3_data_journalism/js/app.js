@@ -33,8 +33,8 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     // cast the data from the csv as numbers
     povdata.forEach(function (data) {
         data.poverty = +data.poverty;
-        data.healthcare = +data.heathcare;
-        //console.log(data.state, data.poverty, data.healthcare, data.abbr)
+        data.healthcare = +data.healthcare;
+        console.log(data.state, data.poverty, data.healthcare, data.abbr)
     });
 
     // create scale for your independent (x) coordinates
@@ -49,7 +49,7 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
 
     // create axes
     var xAxis = d3.axisBottom(xScale);
-    var yAxis = d3.axisLeft(yScale).ticks(6);
+    var yAxis = d3.axisLeft(yScale);
 
     // append axes
     chartGroup.append("g")
