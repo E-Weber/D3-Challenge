@@ -21,6 +21,11 @@ var svg = d3
     .attr("height", svgHeight)
     .attr("width", svgWidth);
 
+// append gropu element
+var chartGroup = svg.append("g")
+    .attr("transform", `translate(${chartMargin.left}, ${chartMargin.top})`);
+
+
 // load data
 d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     console.log(povdata);
@@ -43,30 +48,30 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
         .range([svgHeight, 0]);
 
     // create axes
-    var xAxis = d3.axisBottom(xScale).tickFormat();
-    var yAxis = d3.axisBottom(yScale).ticks(6);
+    var xAxis = d3.axisBottom(xScale);
+    var yAxis = d3.axisLeft(yScale).ticks(6);
 
     // append axes
     chartGroup.append("g")
-        .attr("transform", `translate(0, ${height})`)
+        .attr("transform", `translate(0, ${chartHeight})`)
         .call(xAxis);
 
     chartGroup.append("g")
         .call(yAxis);
 
     // create circles
-    var circlesGroup = chartGroup.selectAll("cirlces")
+    var circlesGroup = chartGroup.selectAll("cirlce")
         .data(povdata)
         .enter()
-        .append("circles")
-        .attr("cx", d => xTimeScale(d.poverty))
-        .attr("cy", d => yLinearScale(d.healthcare))
+        .append("circle")
+        .attr("cx", d => xScale(d.poverty))
+        .attr("cy", d => yScale(d.healthcare))
         .attr("r", "10")
         .attr("fill", "blue")
         .attr("stroke-width", "1")
         .attr("stroke", "black");
 
-});
 
+});
 
 
