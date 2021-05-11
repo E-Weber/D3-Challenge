@@ -47,13 +47,25 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
     var yAxis = d3.axisBottom(yScale).ticks(6);
 
     // append axes
-
     chartGroup.append("g")
         .attr("transform", `translate(0, ${height})`)
         .call(xAxis);
 
     chartGroup.append("g")
         .call(yAxis);
+
+    // create circles
+    var circlesGroup = chartGroup.selectAll("cirlces")
+        .data(povdata)
+        .enter()
+        .append("circles")
+        .attr("cx", d => xTimeScale(d.poverty))
+        .attr("cy", d => yLinearScale(d.healthcare))
+        .attr("r", "10")
+        .attr("fill", "blue")
+        .attr("stroke-width", "1")
+        .attr("stroke", "black");
+
 });
 
 
