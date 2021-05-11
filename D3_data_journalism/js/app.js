@@ -10,3 +10,7 @@ var chartMargin = {
     left: 30
 };
 
+// define dimensions of the chart area
+var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
+var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
+
