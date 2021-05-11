@@ -21,3 +21,11 @@ var svg = d3
     .attr("height", svgHeight)
     .attr("width", svgWidth);
 
+// load data
+d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
+    console.log(povdata);
+    povdata.forEach(function (data) {
+
+
+    })
+})
