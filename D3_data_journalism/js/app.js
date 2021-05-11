@@ -68,9 +68,33 @@ d3.csv("./D3_data_journalism/data/data.csv").then(function (povdata) {
         .attr("cy", d => yScale(d.healthcare))
         .attr("r", "10")
         .attr("fill", "blue")
+        .attr("opacity", ".7")
         .attr("stroke-width", "1")
         .attr("stroke", "black");
 
+
+    // abbr in circles
+    chartGroup.selectAll("text.text-circles")
+        .data(povdata)
+        .enter()
+        .append("text")
+        .classed("text-circles", true)
+        .text(d => d.abbr)
+        .attr("x", d => xScale(d.poverty))
+        .attr("y", d => yScale(d.healthcare))
+        .attr("dy", 5)
+        .attr("text-anchor", "middle")
+        .attr("font-size", "10px")
+    //.attr("font-color", "white");
+
+    // x axis text
+    chartGroup.append("text")
+        .attr("x", 350)
+        .attr("y", 630)
+        .classed("axis-text", true)
+        .text("In Poverty (%)");
+
+    // y axis
 
 });
 
