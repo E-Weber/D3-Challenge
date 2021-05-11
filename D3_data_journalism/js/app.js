@@ -14,3 +14,10 @@ var chartMargin = {
 var chartWidth = svgWidth - chartMargin.left - chartMargin.right;
 var chartHeight = svgHeight - chartMargin.top - chartMargin.bottom;
 
+// select body, append SVG area to it, and set dimensions
+var svg = d3
+    .select("body")
+    .append("svg")
+    .attr("height", svgHeight)
+    .attr("width", svgWidth);
+
